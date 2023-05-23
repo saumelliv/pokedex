@@ -1,17 +1,13 @@
 import React from 'react';
 import {View, Text, SafeAreaView, StyleSheet, StatusBar} from "react-native";
+import LoginForm from '../components/auth/LoginForm';
+import UserData from '../components/auth/UserData';
 
 export default function Account(props) {
+    const auth = null;
     return (
-       <SafeAreaView style={styles.AndroidSafeArea}>
-           <Text>Account</Text>
-       </SafeAreaView>
+       <View >
+        {auth ? <UserData/>: <LoginForm />}
+       </View>
     );
 }
-
-const styles = StyleSheet.create({
-    AndroidSafeArea: {
-        flex: 1,
-        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-    },
-});
