@@ -3,11 +3,13 @@ import React ,{useState, useEffect} from 'react'
 import {useFormik} from 'formik'
 import * as Yup from 'yup'
 import {user, userDetails} from "../../Utils/UserDB"
+import useAuth from '../../hooks/useAuth'
 
 export default function LoginForm() {
 
     const [error, setError]= useState("")
     
+    const{login}=useAuth();
     
     const formik = useFormik({
         initialValues:initialValues(),
@@ -26,8 +28,8 @@ export default function LoginForm() {
                     { cancelable: true }
                 );
             }else{
-                console.log('Login correcto')
-                console.log(userDetails)
+
+                login(userDetails);
             }
         }
 
